@@ -1,4 +1,4 @@
-# FARMS-mon
+# FARMS-geogad
 
 ## Farms Administrator Running Modular Softwares
-## Module: Monitoring
+## Module: Geographic Gardening
