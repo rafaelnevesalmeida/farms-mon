@@ -3,7 +3,15 @@ import gql from 'graphql-tag'
 
 import WeightPanel from './WeightPanel.js'
 
-export const allWeightsQuery = gql`
+export const lastWeightQuery = gql`
+  query lastWeight {
+    lastWeight {
+      weight
+    }
+  }
+`
+
+/* export const allWeightsQuery = gql`
   query allWeights {
     allWeights {
       id
@@ -13,8 +21,8 @@ export const allWeightsQuery = gql`
       time
     }
   }
-`
+` */
 
-export default graphql(allWeightsQuery, {
+export default graphql(lastWeightQuery, {
   options: { pollInterval: 1000 }
 })(WeightPanel)

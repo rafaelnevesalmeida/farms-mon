@@ -1,11 +1,11 @@
 import React from 'react'
 // import { FormattedMessage } from 'react-intl'
 
-import { LabelInfo, Container } from '../../elements'
+import { Label, LabelInfo, Container } from '../../elements'
 
 class Bed extends React.Component {
   render () {
-    const { data: { loading, error, allWeights } } = this.props
+    const { data: { loading, error, lastWeight } } = this.props
 
     if (loading) {
       return <p>Loading ...</p>
@@ -17,6 +17,18 @@ class Bed extends React.Component {
 
     return (
       <Container >
+        {lastWeight.map((weight, i) =>
+          <Container key={i} height='200px' width='500px' marginTop='200px' marginLeft='100px' flexDirection='col' >
+            <Label>Weight: </Label>
+            <LabelInfo>{weight.weight}</LabelInfo>
+            <Label>Kg</Label>
+          </Container>
+        )}
+      </Container>
+    )
+
+    /* return (
+      <Container >
         {allWeights.map((weight, i) =>
           <Container key={i} height='30px'>
             <LabelInfo>Id: {weight.id} | </LabelInfo>
@@ -27,7 +39,7 @@ class Bed extends React.Component {
           </Container>
         )}
       </Container>
-    )
+    ) */
   }
 }
 

@@ -5,6 +5,7 @@ const Container = styled.div`
   max-width: ${props => props.maxWidth || 'auto'};
   height: ${props => props.height || '100%'};
   margin-top: ${props => props.marginTop || null};
+  margin-left: ${props => props.marginLeft || null};
 
   background-color: ${props => props.backgroundColor || null};
   overflow: ${props => props.overFlow || null};
