@@ -24,5 +24,5 @@ export const lastWeightQuery = gql`
 ` */
 
 export default graphql(lastWeightQuery, {
-  options: { pollInterval: 1000 }
+  options: { pollInterval: 5000 }
 })(WeightPanel)
