@@ -15,6 +15,8 @@ const Label = styled.h1`
   font-family: ${props => props.theme.fontFamily.default || null};
   font-size: ${props => props.theme.fontSize.medium || null};
 
+  background-color: ${props => props.backgroundColor || null};
+
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

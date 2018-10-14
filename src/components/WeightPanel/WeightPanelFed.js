@@ -4,9 +4,9 @@ import gql from 'graphql-tag'
 import WeightPanel from './WeightPanel.js'
 
 export const lastWeightQuery = gql`
-  query lastWeight {
-    lastWeight {
-      weight
+  query lastSensorData {
+    lastSensorData {
+      data
     }
   }
 `
@@ -24,5 +24,5 @@ export const lastWeightQuery = gql`
 ` */
 
 export default graphql(lastWeightQuery, {
-  options: { pollInterval: 5000 }
+  options: { pollInterval: 5000 } // TODO move it to config
 })(WeightPanel)

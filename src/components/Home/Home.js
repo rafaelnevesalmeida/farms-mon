@@ -6,12 +6,10 @@ import pt from 'react-intl/locale-data/pt'
 
 import messages from '../../messages'
 
-import { SidePanel, WeightPanel } from '../../components'
+import { WeightPanel } from '../../components'
 
 import {
   Header,
-  Center,
-  Footer,
   Container,
   Label
 } from '../../elements'
@@ -22,7 +20,20 @@ addLocaleData(pt)
 const Home = ({ lang }) => {
   return ( // TODO change the visual props (backgroundColor) to modifier and move IntlProvider to App.js
     <IntlProvider locale={lang} messages={messages[lang]} >
-      <Container flexWrap='null' flexDirection='column' backgroundColor='#448866'>
+      <Container backgroundColor='#888888' height="100%">
+        <Header paddingTop="5px">
+          <Label>
+            <FormattedMessage id='app.label' />
+          </Label>
+        </Header>
+        <WeightPanel />
+      </Container>
+    </IntlProvider>
+  )
+}
+
+export default Home
+/*      <Container flexWrap='null' flexDirection='column' backgroundColor='#448866'>
         <Header>
           <Label>
             <FormattedMessage id='app.label' />
@@ -36,9 +47,4 @@ const Home = ({ lang }) => {
           <SidePanel />
         </Container>
         <Footer />
-      </Container>
-    </IntlProvider>
-  )
-}
-
-export default Home
+      </Container> */

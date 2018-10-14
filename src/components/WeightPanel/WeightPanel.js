@@ -1,11 +1,11 @@
 import React from 'react'
 // import { FormattedMessage } from 'react-intl'
 
-import { Label, LabelInfo, Container } from '../../elements'
+import { LabelInfo, Label, Container } from '../../elements'
 
 class Bed extends React.Component {
   render () {
-    const { data: { loading, error, lastWeight } } = this.props
+    const { data: { loading, error, lastSensorData } } = this.props
 
     if (loading) {
       return <p>Loading ...</p>
@@ -16,12 +16,18 @@ class Bed extends React.Component {
     }
 
     return (
-      <Container >
-        {lastWeight.map((weight, i) =>
-          <Container key={i} height='200px' width='500px' marginTop='200px' marginLeft='100px' flexDirection='col' >
-            <Label>Weight: </Label>
-            <LabelInfo>{weight.weight}</LabelInfo>
-            <Label>Kg</Label>
+      <Container backgroundColor="#1234DD" justifyContent="center">
+        {lastSensorData.map((weight, i) =>
+          <Container key={i} maxWidth="400px" >
+            <Container maxWidth="fit-content" paddingTop="22px" justifyContent="center">
+              <Label>Weight: </Label>
+            </Container>
+            <Container width="auto" alignItems="flex-end">
+              <LabelInfo>{weight.data}</LabelInfo>
+              <Container height="100%" width="auto" paddingBottom="22px" >
+                <Label>Kg</Label>
+              </Container>
+            </Container>
           </Container>
         )}
       </Container>
@@ -44,3 +50,9 @@ class Bed extends React.Component {
 }
 
 export default Bed
+/*
+
+            <Label>Weight: </Label>
+            <LabelInfo>{weight.data}</LabelInfo>
+            <Label>Kg</Label>
+*/
