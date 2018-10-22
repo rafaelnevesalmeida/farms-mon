@@ -20,12 +20,12 @@ class Bed extends React.Component {
         {lastSensorData.map((weight, i) =>
           <Container key={i} maxWidth="400px" >
             <Container maxWidth="fit-content" paddingTop="22px" justifyContent="center">
-              <Label>Weight: </Label>
+              <Label>temperature in the attic: </Label>
             </Container>
             <Container width="auto" alignItems="flex-end">
               <LabelInfo>{weight.data}</LabelInfo>
               <Container height="100%" width="auto" paddingBottom="22px" >
-                <Label>Kg</Label>
+                <Label>°C</Label>
               </Container>
             </Container>
           </Container>
