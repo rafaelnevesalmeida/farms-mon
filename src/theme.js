@@ -21,7 +21,7 @@ injectGlobal`
 
 const theme = {
   fontSize: {
-    giant: '7.0rem',
+    giant: '5.0rem',
     medium: '1.0rem',
     small: '0.8rem',
     verySmall: '0.6rem'

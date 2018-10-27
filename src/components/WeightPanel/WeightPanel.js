@@ -5,7 +5,7 @@ import { LabelInfo, Label, Container } from '../../elements'
 
 class Bed extends React.Component {
   render () {
-    const { data: { loading, error, lastSensorData } } = this.props
+    const { data: { loading, error, lastSensorDataBySensor } } = this.props
 
     if (loading) {
       return <p>Loading ...</p>
@@ -17,15 +17,15 @@ class Bed extends React.Component {
 
     return (
       <Container backgroundColor="#1234DD" justifyContent="center">
-        {lastSensorData.map((weight, i) =>
+        {lastSensorDataBySensor.map((weight, i) =>
           <Container key={i} maxWidth="400px" >
             <Container maxWidth="fit-content" paddingTop="22px" justifyContent="center">
-              <Label>temperature in the attic: </Label>
+              <Label>{this.props.label}: </Label>
             </Container>
             <Container width="auto" alignItems="flex-end">
               <LabelInfo>{weight.data}</LabelInfo>
               <Container height="100%" width="auto" paddingBottom="22px" >
-                <Label>°C</Label>
+                <Label>{this.props.type}</Label>
               </Container>
             </Container>
           </Container>

@@ -3,9 +3,9 @@ import gql from 'graphql-tag'
 
 import WeightPanel from './WeightPanel.js'
 
-export const lastWeightQuery = gql`
-  query lastSensorData {
-    lastSensorData {
+export const lastSensorDataBySensorQuery = gql`
+  query lastSensorDataBySensor($sensorId: Int) {
+    lastSensorDataBySensor (sensorId: $sensorId){
       data
     }
   }
@@ -23,6 +23,9 @@ export const lastWeightQuery = gql`
   }
 ` */
 
-export default graphql(lastWeightQuery, {
-  options: { pollInterval: 5000 } // TODO move it to config
+export default graphql(lastSensorDataBySensorQuery, {
+  options: ({ sensorId }) => ({
+    variables: { sensorId: sensorId },
+    pollInterval: 5000 // TODO move it to config}
+  })
 })(WeightPanel)
