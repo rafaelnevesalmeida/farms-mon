@@ -19,10 +19,10 @@ class Bed extends React.Component {
       <Container backgroundColor="#1234DD" justifyContent="center">
         {lastSensorDataBySensor.map((weight, i) =>
           <Container key={i} maxWidth="400px" >
-            <Container maxWidth="fit-content" paddingTop="22px" justifyContent="center">
-              <Label>{this.props.label}: </Label>
+            <Container maxWidth="100px" paddingTop="22px" justifyContent="flex-end">
+              <Label align='right' >{this.props.label}: </Label>
             </Container>
-            <Container width="auto" alignItems="flex-end">
+            <Container marginleft="20px" width="auto" alignItems="flex-end">
               <LabelInfo>{weight.data}</LabelInfo>
               <Container height="100%" width="auto" paddingBottom="22px" >
                 <Label>{this.props.type}</Label>

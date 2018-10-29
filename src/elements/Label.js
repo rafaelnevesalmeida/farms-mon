@@ -9,7 +9,7 @@ const Label = styled.h1`
   padding-left: 2px;
   cursor: default;
 
-  text-align: center;
+  text-align: ${props => props.align || 'center'};
   height: ${props => props.height || 'auto'};
   width: ${props => props.width || 'auto'};
   font-family: ${props => props.theme.fontFamily.default || null};

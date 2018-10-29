@@ -26,8 +26,10 @@ const Home = ({ lang }) => {
             <FormattedMessage id='app.label' />
           </Label>
         </Header>
-        <WeightPanel label='temperature' type='C' sensorId='1' />
-        <WeightPanel label='humitidy' type='%' sensorId='2' />
+        <WeightPanel label='Air temperature' type='°C' sensorId='1' />
+        <WeightPanel label='Air  humidity' type='%' sensorId='2' />
+        <WeightPanel label='Soil temperature' type='°C' sensorId='3' />
+        <WeightPanel label='Soil humidity' type='%' sensorId='4' />
       </Container>
     </IntlProvider>
   )
