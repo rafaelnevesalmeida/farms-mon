@@ -26,6 +26,6 @@ export const lastSensorDataBySensorQuery = gql`
 export default graphql(lastSensorDataBySensorQuery, {
   options: ({ sensorId }) => ({
     variables: { sensorId: sensorId },
-    pollInterval: 5000 // TODO move it to config}
+    pollInterval: 15000 // TODO move it to config}
   })
 })(WeightPanel)
