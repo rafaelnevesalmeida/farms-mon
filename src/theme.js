@@ -23,7 +23,7 @@ const theme = {
   fontSize: {
     giant: '4.0rem',
     medium: '1.2rem',
-    small: '0.8rem',
+    small: '0.9rem',
     verySmall: '0.6rem'
   },
   fontFamily: {

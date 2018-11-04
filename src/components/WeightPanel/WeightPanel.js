@@ -4,6 +4,12 @@ import React from 'react'
 import { LabelInfo, Label, Container } from '../../elements'
 
 class Bed extends React.Component {
+  formatTime (time) {
+    let newTime = time.substr(0, 2)
+    newTime = newTime.concat(':', time.substr(2, 2), ':', time.substr(4, 2))
+    return newTime
+  }
+
   render () {
     const { data: { loading, error, lastSensorDataBySensor } } = this.props
 
@@ -21,6 +27,7 @@ class Bed extends React.Component {
           <Container key={i} maxWidth="400px" >
             <Container maxWidth="100px" paddingTop="22px" justifyContent="flex-end">
               <Label align='right' >{this.props.label}: </Label>
+              <Label align='right' >{this.formatTime(weight.time)}</Label>
             </Container>
             <Container marginleft="20px" width="auto" alignItems="flex-end">
               <LabelInfo>{weight.data}</LabelInfo>
