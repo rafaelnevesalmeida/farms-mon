@@ -6,7 +6,7 @@ import pt from 'react-intl/locale-data/pt'
 
 import messages from '../../messages'
 
-import { WeightPanel } from '../../components'
+import { Chart, WeightPanel } from '../../components'
 
 import {
   Header,
@@ -20,16 +20,28 @@ addLocaleData(pt)
 const Home = ({ lang }) => {
   return ( // TODO change the visual props (backgroundColor) to modifier and move IntlProvider to App.js
     <IntlProvider locale={lang} messages={messages[lang]} >
-      <Container backgroundColor='#888888' height="100%">
+      <Container backgroundColor='#888888' >
         <Header paddingTop="5px">
           <Label>
             <FormattedMessage id='app.label' />
           </Label>
         </Header>
-        <WeightPanel label='Air temperature' type='°C' sensorId='1' />
-        <WeightPanel label='Air  humidity' type='%' sensorId='2' />
-        <WeightPanel label='Soil temperature' type='°C' sensorId='3' />
-        <WeightPanel label='Soil humidity' type='%' sensorId='4' />
+        <Container justifyContent="center" marginBottom="10px" >
+          <WeightPanel label='Air temperature' type='°C' sensorId='1' />
+          <Chart sensorId='1' date="20181105" />
+        </Container>
+        <Container justifyContent="center" marginBottom="10px" >
+          <WeightPanel label='Air  humidity' type='%' sensorId='2' />
+          <Chart sensorId='2' date="20181105" />
+        </Container>
+        <Container justifyContent="center" marginBottom="10px" >
+          <WeightPanel label='Soil temperature' type='°C' sensorId='3' />
+          <Chart sensorId='3' date="20181105" />
+        </Container>
+        <Container justifyContent="center" marginBottom="10px" >
+          <WeightPanel label='Soil humidity' type='%' sensorId='4' />
+          <Chart sensorId='4' date="20181105" />
+        </Container>
       </Container>
     </IntlProvider>
   )

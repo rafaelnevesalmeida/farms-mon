@@ -5,7 +5,7 @@ import WeightPanel from './WeightPanel.js'
 
 export const lastSensorDataBySensorQuery = gql`
   query lastSensorDataBySensor($sensorId: Int) {
-    lastSensorDataBySensor (sensorId: $sensorId){
+    lastSensorDataBySensor (sensorId: $sensorId) { 
       data
       time
     }

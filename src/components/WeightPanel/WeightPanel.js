@@ -1,6 +1,5 @@
 import React from 'react'
 // import { FormattedMessage } from 'react-intl'
-
 import { LabelInfo, Label, Container } from '../../elements'
 
 class Bed extends React.Component {
@@ -22,14 +21,14 @@ class Bed extends React.Component {
     }
 
     return (
-      <Container backgroundColor="#1234DD" justifyContent="center">
+      <Container backgroundColor="#1234DD" justifyContent="center" maxWidth="200px" >
         {lastSensorDataBySensor.map((weight, i) =>
           <Container key={i} maxWidth="400px" >
-            <Container maxWidth="100px" paddingTop="22px" justifyContent="flex-end">
+            <Container marginleft="10px" paddingTop="22px" >
               <Label align='right' >{this.props.label}: </Label>
               <Label align='right' >{this.formatTime(weight.time)}</Label>
             </Container>
-            <Container marginleft="20px" width="auto" alignItems="flex-end">
+            <Container marginleft="10px" alignItems="flex-end">
               <LabelInfo>{weight.data}</LabelInfo>
               <Container height="100%" width="auto" paddingBottom="22px" >
                 <Label>{this.props.type}</Label>
@@ -39,27 +38,7 @@ class Bed extends React.Component {
         )}
       </Container>
     )
-
-    /* return (
-      <Container >
-        {allWeights.map((weight, i) =>
-          <Container key={i} height='30px'>
-            <LabelInfo>Id: {weight.id} | </LabelInfo>
-            <LabelInfo>Weight: {weight.weight} | </LabelInfo>
-            <LabelInfo>Station: {weight.stationId} | </LabelInfo>
-            <LabelInfo>Date: {weight.date} | </LabelInfo>
-            <LabelInfo>Time: {weight.time}</LabelInfo>
-          </Container>
-        )}
-      </Container>
-    ) */
   }
 }
 
 export default Bed
-/*
-
-            <Label>Weight: </Label>
-            <LabelInfo>{weight.data}</LabelInfo>
-            <Label>Kg</Label>
-*/
