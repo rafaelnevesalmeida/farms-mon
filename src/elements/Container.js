@@ -4,6 +4,7 @@ const Container = styled.div`
   width: ${props => props.width || '100%'};
   max-width: ${props => props.maxWidth || 'auto'};
   height: ${props => props.height || 'auto'};
+  min-height: ${props => props.minHeight || 'auto'};
   margin-top: ${props => props.marginTop || null};
   margin-bottom: ${props => props.marginBottom || null};
   margin-left: ${props => props.marginleft || null};

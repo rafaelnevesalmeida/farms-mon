@@ -7,6 +7,7 @@ export const lastSensorDataBySensorQuery = gql`
   query lastSensorDataBySensor($sensorId: Int) {
     lastSensorDataBySensor (sensorId: $sensorId) { 
       data
+      date
       time
     }
   }
