@@ -28,15 +28,17 @@ class Bed extends React.Component {
     }
 
     return (
-      <Container backgroundColor="#1234DD" justifyContent="center" maxWidth="200px" >
+      <Container backgroundColor="#4064AD" justifyContent="center" height="300px" width="300px" flexGrow="1" >
         {lastSensorDataBySensor.map((weight, i) =>
-          <Container key={i} maxWidth="400px" >
-            <Container marginleft="10px" paddingTop="22px" >
-              <Label align='right' >{this.props.label}: </Label>
+          <Container key={i} paddingLeft="40px" maxWidth="300px" >
+            <Container paddingTop="40px" paddingBottom="20px" flexDirection="column" >
+              <Container paddingBottom="40px">
+                <Label align='left' fontSize="30px" >{this.props.label}: </Label>
+              </Container>
               <Label align='right' >{this.formatDate(weight.date)}</Label>
               <Label align='right' >{this.formatTime(weight.time)}</Label>
             </Container>
-            <Container marginleft="10px" alignItems="flex-end">
+            <Container alignItems="flex-end">
               <LabelInfo>{weight.data}</LabelInfo>
               <Container height="100%" width="auto" paddingBottom="22px" >
                 <Label>{this.props.type}</Label>

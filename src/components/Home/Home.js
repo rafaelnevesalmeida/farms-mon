@@ -17,34 +17,50 @@ import {
 addLocaleData(en)
 addLocaleData(pt)
 
-const Home = ({ lang }) => {
-  return ( // TODO change the visual props (backgroundColor) to modifier and move IntlProvider to App.js
-    <IntlProvider locale={lang} messages={messages[lang]} >
-      <Container backgroundColor='#888888' >
-        <Header paddingTop="5px">
-          <Label>
-            <FormattedMessage id='app.label' />
-          </Label>
-        </Header>
-        <Container justifyContent="center" marginBottom="10px" >
-          <WeightPanel label='Air temperature' type='°C' sensorId='1' />
-          <Chart sensorId='1' date="20181105" />
+class Home extends React.Component {
+  // const Home = ({ lang }) => {
+  currentDate () {
+    const now = new Date()
+    const year = now.getFullYear()
+    const month = (now.getMonth() + 1) < 10 ? '0' + (now.getMonth() + 1) : (now.getMonth() + 1)
+    const day = now.getDate() < 10 ? '0' + now.getDate() : now.getDate()
+    let newDate = ''
+    newDate = newDate.concat(year, month, day)
+    console.log(newDate)
+    return newDate
+  }
+
+  render () {
+    const { lang } = this.props
+
+    return ( // TODO change the visual props (backgroundColor) to modifier and move IntlProvider to App.js
+      <IntlProvider locale={lang} messages={messages[lang]} >
+        <Container backgroundColor='#888888' >
+          <Header paddingTop="5px">
+            <Label>
+              <FormattedMessage id='app.label' />
+            </Label>
+          </Header>
+          <Container justifyContent="center" marginBottom="10px" >
+            <WeightPanel label='Air temperature' type='°C' sensorId='1' />
+            <Chart sensorId='1' dataType='Temperature' date={this.currentDate()} />
+          </Container>
+          <Container justifyContent="center" marginBottom="10px" >
+            <WeightPanel label='Air  humidity' type='%' sensorId='2' />
+            <Chart sensorId='2' dataType='Humidity' date={this.currentDate()} />
+          </Container>
+          <Container justifyContent="center" marginBottom="10px" >
+            <WeightPanel label='Soil temperature' type='°C' sensorId='3' />
+            <Chart sensorId='3' dataType='Temperature' date={this.currentDate()} />
+          </Container>
+          <Container justifyContent="center" marginBottom="10px" >
+            <WeightPanel label='Soil humidity' type='%' sensorId='4' />
+            <Chart sensorId='4' dataType='Humidity' date={this.currentDate()} />
+          </Container>
         </Container>
-        <Container justifyContent="center" marginBottom="10px" >
-          <WeightPanel label='Air  humidity' type='%' sensorId='2' />
-          <Chart sensorId='2' date="20181105" />
-        </Container>
-        <Container justifyContent="center" marginBottom="10px" >
-          <WeightPanel label='Soil temperature' type='°C' sensorId='3' />
-          <Chart sensorId='3' date="20181105" />
-        </Container>
-        <Container justifyContent="center" marginBottom="10px" >
-          <WeightPanel label='Soil humidity' type='%' sensorId='4' />
-          <Chart sensorId='4' date="20181105" />
-        </Container>
-      </Container>
-    </IntlProvider>
-  )
+      </IntlProvider>
+    )
+  }
 }
 
 export default Home
