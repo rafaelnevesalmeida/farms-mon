@@ -1,6 +1,6 @@
 import React from 'react'
 // import { FormattedMessage } from 'react-intl'
-import { LabelInfo, Label, Container } from '../../elements'
+import { LabelInfo, Label, Container, Edit, Button } from '../../elements'
 
 class Bed extends React.Component {
   // TODO move it to another file
@@ -17,7 +17,7 @@ class Bed extends React.Component {
   }
 
   render () {
-    const { data: { loading, error, lastSensorDataBySensor } } = this.props
+    const { sensorIndex, date, data: { loading, error, lastSensorDataBySensor } } = this.props
 
     if (loading) {
       return <p>Loading ...</p>
@@ -30,15 +30,31 @@ class Bed extends React.Component {
     return (
       <Container backgroundColor="#4064AD" justifyContent="center" height="300px" width="300px" flexGrow="1" >
         {lastSensorDataBySensor.map((weight, i) =>
-          <Container key={i} paddingLeft="40px" maxWidth="300px" >
+          <Container key={i} paddingLeft="40px" maxWidth="260px" >
             <Container paddingTop="40px" paddingBottom="20px" flexDirection="column" >
               <Container paddingBottom="40px">
                 <Label align='left' fontSize="30px" >{this.props.label}: </Label>
               </Container>
-              <Label align='right' >{this.formatDate(weight.date)}</Label>
-              <Label align='right' >{this.formatTime(weight.time)}</Label>
+
+              <Container flexDirection='row'>
+                <Button width='24px' onClick={() => this.props.decDate(sensorIndex, date)}>
+                  <Label>{'<'}</Label>
+                </Button>
+                <Edit
+                  width='100px'
+                  height='23px'
+                  grow='0'
+                  placeholder='Date'
+                  value={this.formatDate(date)}
+                  disabled
+                />
+                <Button width='24px' onClick={() => this.props.incDate(sensorIndex, date)}>
+                  <Label>{'>'}</Label>
+                </Button>
+              </Container>
             </Container>
-            <Container alignItems="flex-end">
+            <Container alignItems="flex-end" backgroundColor='#6286CF' >
+              <Label align='right'>Last data today: ({this.formatTime(weight.time)})</Label>
               <LabelInfo>{weight.data}</LabelInfo>
               <Container height="100%" width="auto" paddingBottom="22px" >
                 <Label>{this.props.type}</Label>

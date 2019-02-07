@@ -30,7 +30,7 @@ const theme = {
     default: 'Arial'
   },
   backgroundColor: {
-    button: '#AA8844'
+    button: '#6286CF'
   }
 }
 

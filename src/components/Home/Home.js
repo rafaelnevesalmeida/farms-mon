@@ -18,7 +18,7 @@ addLocaleData(en)
 addLocaleData(pt)
 
 class Home extends React.Component {
-  // const Home = ({ lang }) => {
+  // TODO move it to a different place
   currentDate () {
     const now = new Date()
     const year = now.getFullYear()
@@ -26,12 +26,11 @@ class Home extends React.Component {
     const day = now.getDate() < 10 ? '0' + now.getDate() : now.getDate()
     let newDate = ''
     newDate = newDate.concat(year, month, day)
-    console.log(newDate)
     return newDate
   }
 
   render () {
-    const { lang } = this.props
+    const { lang, incDate, decDate, sensorDates } = this.props
 
     return ( // TODO change the visual props (backgroundColor) to modifier and move IntlProvider to App.js
       <IntlProvider locale={lang} messages={messages[lang]} >
@@ -40,23 +39,27 @@ class Home extends React.Component {
             <Label>
               <FormattedMessage id='app.label' />
             </Label>
+            <Label>
+              {incDate}
+            </Label>
           </Header>
-          <Container justifyContent="center" marginBottom="10px" >
-            <WeightPanel label='Air temperature' type='°C' sensorId='1' />
-            <Chart sensorId='1' dataType='Temperature' date={this.currentDate()} />
-          </Container>
-          <Container justifyContent="center" marginBottom="10px" >
-            <WeightPanel label='Air  humidity' type='%' sensorId='2' />
-            <Chart sensorId='2' dataType='Humidity' date={this.currentDate()} />
-          </Container>
-          <Container justifyContent="center" marginBottom="10px" >
-            <WeightPanel label='Soil temperature' type='°C' sensorId='3' />
-            <Chart sensorId='3' dataType='Temperature' date={this.currentDate()} />
-          </Container>
-          <Container justifyContent="center" marginBottom="10px" >
-            <WeightPanel label='Soil humidity' type='%' sensorId='4' />
-            <Chart sensorId='4' dataType='Humidity' date={this.currentDate()} />
-          </Container>
+
+          {sensorDates.map((sensorDate, i) =>
+            <Container key={i} justifyContent="center" marginBottom="10px" >
+              <WeightPanel
+                label={sensorDate.label}
+                type={sensorDate.type}
+                sensorIndex={i}
+                sensorId={sensorDate.sensorId}
+                date={sensorDate.date}
+                incDate={incDate}
+                decDate={decDate}
+              />
+              <Container backgroundColor="#FFF" justifyContent="center" height="300px" width="800px" flexGrow="2" >
+                <Chart sensorId={sensorDate.sensorId} dataType='Temperature' date={sensorDate.date} />
+              </Container>
+            </Container>
+          )}
         </Container>
       </IntlProvider>
     )
@@ -64,18 +67,3 @@ class Home extends React.Component {
 }
 
 export default Home
-/*      <Container flexWrap='null' flexDirection='column' backgroundColor='#448866'>
-        <Header>
-          <Label>
-            <FormattedMessage id='app.label' />
-          </Label>
-        </Header>
-        <Container justifyContent='space-between'>
-          <SidePanel />
-          <Center>
-            <WeightPanel />
-          </Center>
-          <SidePanel />
-        </Container>
-        <Footer />
-      </Container> */
