@@ -39,9 +39,6 @@ class Home extends React.Component {
             <Label>
               <FormattedMessage id='app.label' />
             </Label>
-            <Label>
-              {incDate}
-            </Label>
           </Header>
 
           {sensorDates.map((sensorDate, i) =>
@@ -52,11 +49,12 @@ class Home extends React.Component {
                 sensorIndex={i}
                 sensorId={sensorDate.sensorId}
                 date={sensorDate.date}
+                location={sensorDate.location}
                 incDate={incDate}
                 decDate={decDate}
               />
               <Container backgroundColor="#FFF" justifyContent="center" height="300px" width="800px" flexGrow="2" >
-                <Chart sensorId={sensorDate.sensorId} dataType='Temperature' date={sensorDate.date} />
+                <Chart sensorId={sensorDate.sensorId} dataType={sensorDate.dataType} date={sensorDate.date} />
               </Container>
             </Container>
           )}

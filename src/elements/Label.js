@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const Label = styled.h1`
   border: 0px;
   margin: 0px;
-  margin-left: 5px;
+  margin-left: ${props => props.marginLeft || '5px'};
   margin-top: ${props => props.marginTop || null};
   padding-top: 3px;
   padding-left: 2px;

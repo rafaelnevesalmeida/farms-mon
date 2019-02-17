@@ -13,25 +13,65 @@ export class ContextProvider extends React.Component {
           sensorId: 1,
           date: this.currentDate(),
           label: 'Air temperature',
-          type: '°C'
+          dataType: 'Temperature',
+          type: '°C',
+          location: 'Banch 1'
         },
         {
           sensorId: 2,
           date: this.currentDate(),
           label: 'Air humidity',
-          type: '%'
+          dataType: 'Humidity',
+          type: '%',
+          location: 'Banch 1'
+        },
+        {
+          sensorId: 5,
+          date: this.currentDate(),
+          label: 'Air temperature',
+          dataType: 'Temperature',
+          type: '°C',
+          location: 'Banch 2'
+        },
+        {
+          sensorId: 6,
+          date: this.currentDate(),
+          label: 'Air humidity',
+          dataType: 'Humidity',
+          type: '%',
+          location: 'Banch 2'
+        },
+        {
+          sensorId: 7,
+          date: this.currentDate(),
+          label: 'Air temperature',
+          dataType: 'Temperature',
+          type: '°C',
+          location: 'Banch 3'
+        },
+        {
+          sensorId: 8,
+          date: this.currentDate(),
+          label: 'Air humidity',
+          dataType: 'Humidity',
+          type: '%',
+          location: 'Banch 3'
         },
         {
           sensorId: 3,
           date: this.currentDate(),
           label: 'Soil temperature',
-          type: '°C'
+          dataType: 'Temperature',
+          type: '°C',
+          location: 'Banch 1'
         },
         {
           sensorId: 4,
           date: this.currentDate(),
           label: 'Soil humidity',
-          type: '%'
+          dataType: 'Humidity',
+          type: '%',
+          location: 'Banch 1'
         }
       ]
     }

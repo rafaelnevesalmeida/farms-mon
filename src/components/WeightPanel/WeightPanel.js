@@ -30,14 +30,16 @@ class Bed extends React.Component {
     return (
       <Container backgroundColor="#4064AD" justifyContent="center" height="300px" width="300px" flexGrow="1" >
         {lastSensorDataBySensor.map((weight, i) =>
-          <Container key={i} paddingLeft="40px" maxWidth="260px" >
-            <Container paddingTop="40px" paddingBottom="20px" flexDirection="column" >
-              <Container paddingBottom="40px">
+          <Container key={i} paddingLeft="10px" maxWidth="310px" >
+            <Container paddingTop="30px" paddingBottom="20px" flexDirection="column" >
+              <Container paddingBottom="30px">
+                <Label align='left' fontSize="30px" >{this.props.location} </Label>
                 <Label align='left' fontSize="30px" >{this.props.label}: </Label>
               </Container>
 
-              <Container flexDirection='row'>
-                <Button width='24px' onClick={() => this.props.decDate(sensorIndex, date)}>
+              <Container flexDirection='row' >
+                <Label marginLeft='3px' align='right'>Chart date: </Label>
+                <Button width='24px' marginLeft='15px' onClick={() => this.props.decDate(sensorIndex, date)}>
                   <Label>{'<'}</Label>
                 </Button>
                 <Edit
@@ -53,11 +55,17 @@ class Bed extends React.Component {
                 </Button>
               </Container>
             </Container>
-            <Container alignItems="flex-end" backgroundColor='#6286CF' >
-              <Label align='right'>Last data today: ({this.formatTime(weight.time)})</Label>
-              <LabelInfo>{weight.data}</LabelInfo>
-              <Container height="100%" width="auto" paddingBottom="22px" >
-                <Label>{this.props.type}</Label>
+            <Container backgroundColor='#6286CF' flexDirection="row" >
+              <Container height="100%" width="35%" >
+                <Label >Last data:</Label>
+                <Label >{this.formatDate(weight.date)}</Label>
+                <Label >{this.formatTime(weight.time)}</Label>
+              </Container>
+              <Container height="100%" width="60%" alignItems="flex-end" >
+                <LabelInfo>{weight.data}</LabelInfo>
+                <Container height="100%" width="auto" paddingBottom="10px" >
+                  <Label>{this.props.type}</Label>
+                </Container>
               </Container>
             </Container>
           </Container>
