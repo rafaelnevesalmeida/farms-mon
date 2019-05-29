@@ -1,7 +1,7 @@
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
-import WeightPanel from './WeightPanel.js'
+import SensorPanel from './SensorPanel.js'
 
 export const lastSensorDataBySensorQuery = gql`
   query lastSensorDataBySensor($sensorId: Int) {
@@ -18,4 +18,4 @@ export default graphql(lastSensorDataBySensorQuery, {
     variables: { sensorId: sensorId },
     pollInterval: 15000 // TODO move it to config}
   })
-})(WeightPanel)
+})(SensorPanel)

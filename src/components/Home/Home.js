@@ -1,12 +1,13 @@
 // eslint-disable-next-line
 import React from 'react'
 import { FormattedMessage, addLocaleData, IntlProvider } from 'react-intl'
+// TODO move the lang things to the app.js
 import en from 'react-intl/locale-data/en'
 import pt from 'react-intl/locale-data/pt'
 
 import messages from '../../messages'
 
-import { Chart, WeightPanel } from '../../components'
+import { Chart, SensorPanel } from '../../components'
 
 import {
   Header,
@@ -33,6 +34,7 @@ class Home extends React.Component {
     const { lang, incDate, decDate, sensorDates } = this.props
 
     return ( // TODO change the visual props (backgroundColor) to modifier and move IntlProvider to App.js
+      // TODO move sensorDates to DB
       <IntlProvider locale={lang} messages={messages[lang]} >
         <Container backgroundColor='#888888' >
           <Header paddingTop="5px">
@@ -43,7 +45,7 @@ class Home extends React.Component {
 
           {sensorDates.map((sensorDate, i) =>
             <Container key={i} justifyContent="center" marginBottom="10px" >
-              <WeightPanel
+              <SensorPanel
                 label={sensorDate.label}
                 type={sensorDate.type}
                 sensorIndex={i}

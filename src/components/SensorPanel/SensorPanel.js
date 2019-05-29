@@ -2,7 +2,7 @@ import React from 'react'
 // import { FormattedMessage } from 'react-intl'
 import { LabelInfo, Label, Container, Edit, Button } from '../../elements'
 
-class Bed extends React.Component {
+class SensorPanel extends React.Component {
   // TODO move it to another file
   formatTime (time) {
     let newTime = time.substr(0, 2)
@@ -29,7 +29,7 @@ class Bed extends React.Component {
 
     return (
       <Container backgroundColor="#4064AD" justifyContent="center" height="300px" width="300px" flexGrow="1" >
-        {lastSensorDataBySensor.map((weight, i) =>
+        {lastSensorDataBySensor.map((SensorData, i) =>
           <Container key={i} paddingLeft="10px" maxWidth="310px" >
             <Container paddingTop="30px" paddingBottom="20px" flexDirection="column" >
               <Container paddingBottom="30px">
@@ -58,11 +58,11 @@ class Bed extends React.Component {
             <Container backgroundColor='#6286CF' flexDirection="row" >
               <Container height="100%" width="35%" >
                 <Label >Last data:</Label>
-                <Label >{this.formatDate(weight.date)}</Label>
-                <Label >{this.formatTime(weight.time)}</Label>
+                <Label >{this.formatDate(SensorData.date)}</Label>
+                <Label >{this.formatTime(SensorData.time)}</Label>
               </Container>
               <Container height="100%" width="60%" alignItems="flex-end" >
-                <LabelInfo>{weight.data}</LabelInfo>
+                <LabelInfo>{SensorData.data}</LabelInfo>
                 <Container height="100%" width="auto" paddingBottom="10px" >
                   <Label>{this.props.type}</Label>
                 </Container>
@@ -75,4 +75,4 @@ class Bed extends React.Component {
   }
 }
 
-export default Bed
+export default SensorPanel
