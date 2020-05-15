@@ -1,5 +1,6 @@
 import React from 'react'
-// import { FormattedMessage } from 'react-intl'
+import { FormattedMessage } from 'react-intl'
+import { ExportButtonDay } from '../../components'
 import { LabelInfo, Label, Container, Edit, Button } from '../../elements'
 
 class SensorPanel extends React.Component {
@@ -17,7 +18,7 @@ class SensorPanel extends React.Component {
   }
 
   render () {
-    const { sensorIndex, date, data: { loading, error, lastSensorDataBySensor } } = this.props
+    const { sensorIndex, sensorId, date, data: { loading, error, lastSensorDataBySensor } } = this.props
 
     if (loading) {
       return <p>Loading ...</p>
@@ -31,9 +32,9 @@ class SensorPanel extends React.Component {
       <Container backgroundColor="#4064AD" justifyContent="center" height="300px" width="300px" flexGrow="1" >
         {lastSensorDataBySensor.map((SensorData, i) =>
           <Container key={i} paddingLeft="10px" maxWidth="310px" >
-            <Container paddingTop="30px" paddingBottom="20px" flexDirection="column" >
+            <Container paddingTop="20px" paddingBottom="20px" flexDirection="column" >
               <Container paddingBottom="30px">
-                <Label align='left' fontSize="30px" >{this.props.location} </Label>
+                <Label align='left' fontSize="24px" >{this.props.location} </Label>
                 <Label align='left' fontSize="30px" >{this.props.label}: </Label>
               </Container>
 
@@ -67,6 +68,11 @@ class SensorPanel extends React.Component {
                   <Label>{this.props.type}</Label>
                 </Container>
               </Container>
+            </Container>
+
+            <Container paddingTop="10px" flexDirection="row" >
+              <Label align='left' marginRight='15px' ><FormattedMessage id='app.sensor.export' /></Label>
+              <ExportButtonDay sensorId={sensorId} date={date} />
             </Container>
           </Container>
         )}

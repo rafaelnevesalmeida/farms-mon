@@ -4,6 +4,7 @@ const Label = styled.h1`
   border: 0px;
   margin: 0px;
   margin-left: ${props => props.marginLeft || '5px'};
+  margin-right: ${props => props.marginRight || '5px'};
   margin-top: ${props => props.marginTop || null};
   padding-top: 3px;
   padding-left: 2px;

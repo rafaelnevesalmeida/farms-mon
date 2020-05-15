@@ -1,7 +1,7 @@
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
-import Chart from './Chart.js'
+import ExportButtonDay from './ExportButtonDay.js'
 
 export const sensorDataPerDateQuery = gql`
   query sensorDataPerDate($sensorId: Int, $date: String) {
@@ -20,4 +20,4 @@ export default graphql(sensorDataPerDateQuery, {
     },
     pollInterval: 15000 // TODO move it to config}
   })
-})(Chart)
+})(ExportButtonDay)
